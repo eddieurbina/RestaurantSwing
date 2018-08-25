@@ -11,8 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Experts extends javax.swing.JFrame {
-         String text = leerSaludable();
-        String text2 = leerNoSaludable(); 
+         String texto = "";
     public Experts() {
         initComponents();
         setLocationRelativeTo(null);
@@ -26,56 +25,24 @@ public class Experts extends javax.swing.JFrame {
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
         fondo.setBounds(0,0, uno.getIconWidth(), uno.getIconHeight());
-        
        
-        
     }
     
      public String leerSaludable(){
-        String texto;
+        
         File archivo = null;
         FileReader fr = null; 
         BufferedReader br = null;
         String result = ""; 
         
         try {
-            archivo = new File("src/InformacionRestaurante/menuSaludable.txt");
+            archivo = new File("src/InformacionRestaurante/" + texto + ".txt");
             fr = new FileReader(archivo);
             br = new BufferedReader(fr); 
             
             String linea = ""; 
             while((linea = br.readLine()) != null) {
-                result = linea; 
-            }
-        } catch (Exception e) {
-            e.printStackTrace(); 
-        } finally {
-            try {
-                if(null != fr){
-                    fr.close();
-                }
-            } catch (Exception e2) {
-                e2.printStackTrace(); 
-            }
-        }
-        return result;
-    }
-     
-     public String leerNoSaludable(){
-        String texto;
-        File archivo = null;
-        FileReader fr = null; 
-        BufferedReader br = null;
-        String result = ""; 
-        
-        try {
-            archivo = new File("src/InformacionRestaurante/menuNoSaludable.txt");
-            fr = new FileReader(archivo);
-            br = new BufferedReader(fr); 
-            
-            String linea = ""; 
-            while((linea = br.readLine()) != null) {
-                result = linea; 
+                result += linea + "\n"; 
             }
         } catch (Exception e) {
             e.printStackTrace(); 
@@ -183,10 +150,13 @@ public class Experts extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,  "Se necesita al menos una opcion seleccionada!");
         }
         else if(rbHealthy.isSelected()) {
-            textArea.setText(text);
+            texto = "menuNoSaludable";
+            
         } else if(rbUnhealthy.isSelected()){
-            textArea.setText(text2);
-        }
+            texto = "menuSaludable";
+        } 
+        
+        textArea.setText(leerSaludable());
     }//GEN-LAST:event_btnSearchActionPerformed
 
     public static void main(String args[]) {
