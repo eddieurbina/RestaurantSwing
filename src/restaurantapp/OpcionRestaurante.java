@@ -10,10 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Aula E2
- */
 public class OpcionRestaurante extends javax.swing.JFrame {
 
     public OpcionRestaurante() {
@@ -31,6 +27,7 @@ public class OpcionRestaurante extends javax.swing.JFrame {
         fondo.setBounds(0,0, uno.getIconWidth(), uno.getIconHeight());
         
         
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -45,6 +42,11 @@ public class OpcionRestaurante extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnAbout.setText("Acerca de");
+        btnAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAboutActionPerformed(evt);
+            }
+        });
 
         btnExperts.setText("Nuestros expertos");
 
@@ -81,6 +83,12 @@ public class OpcionRestaurante extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
+        AcercaDe ventana = new AcercaDe();
+        ventana.setVisible(true);
+        dispose(); 
+    }//GEN-LAST:event_btnAboutActionPerformed
 
     public static void main(String args[]) {
       
